@@ -1,0 +1,22 @@
+<div class="createbox">
+
+
+<h2>New Session</h2>
+
+
+  <div class="createform">
+
+    <p class="createsession">
+      <%= simple_form_for [@host, @training] do |f| %>
+        <%= f.input :date %>
+        <%= f.input :begining %>
+        <%= f.input :end_time %>
+        <%= f.input :address %>
+        <%= f.input :user_id, input_html: {value: params[:user_id]} %>
+        <%= f.input :host_id, input_html: {value: params[:host_id]} %>
+        <%= f.button :submit %>
+      <% end %>
+    </p>
+  </div>
+
+</div>

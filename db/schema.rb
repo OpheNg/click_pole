@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_13_093505) do
+ActiveRecord::Schema.define(version: 2022_10_13_153827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hosts", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "address"
+    t.string "email"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_hosts_on_user_id"
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "address"
+    t.string "email"
+    t.string "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "trainings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "host_id", null: false
+    t.time "begining"
+    t.time "end_time"
+    t.string "address"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.date "date"
+    t.index ["host_id"], name: "index_trainings_on_host_id"
+    t.index ["user_id"], name: "index_trainings_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -23,8 +59,15 @@ ActiveRecord::Schema.define(version: 2022_10_13_093505) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "firstname"
+    t.string "lastname"
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "hosts", "users"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "trainings", "hosts"
+  add_foreign_key "trainings", "users"
 end

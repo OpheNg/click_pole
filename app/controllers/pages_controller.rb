@@ -3,4 +3,14 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def my_account
+    @host = current_user
+  end
+
+  def tutorials
+  end
+
+  def shop
+  end
 end
