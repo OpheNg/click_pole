@@ -15,5 +15,5 @@ user_1 = User.create!(email: "li@lo.fr", password: 'azerty', firstname:'lili', l
 
 host_1 = Host.create!(email: "lulu@lo.fr", firstname:'lulu', lastname: 'lo', address:'la', user: user_1)
 
-training_1 = Training.create!(date:Date.today, begining:Time.now, end_time: Time.now, address:'ici et la', user: user_1, host: host_1)
-training_2 = Training.create!(date:Date.today + 1, begining:Time.now, end_time: Time.now, address:'ici et la', user: user_1, host: host_1)
+training_1 = Training.create!(date:Date.today, begining:Time.now, end_time: Time.now, address:'ici et la', user: user_1)
+training_2 = Training.create!(date:Date.today + 1, begining:Time.now, end_time: Time.now, address:'ici et la', user: user_1)

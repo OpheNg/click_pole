@@ -11,6 +11,7 @@ class UsersController < ApplicationController
 
   def share
     @user = current_user
+    @host = current_user
 
   end
 end

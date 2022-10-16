@@ -6,14 +6,17 @@ Rails.application.routes.draw do
   # resources :hosts
   # resources :trainings
 
-  resources :hosts do
-    resources :trainings
-  end
+  resources :hosts
+  resources :trainings
+
 
   # controller users
   get 'profile', to: 'users#profile'
   get 'find_a_pole', to: 'users#find_a_pole'
+
+  # hosts controller
   get 'share', to: 'hosts#index'
+  post 'new_host', to: 'hosts#create'
 
   # controller pages
   get 'my_account', to: 'pages#my_account'
@@ -22,6 +25,7 @@ Rails.application.routes.draw do
   get 'shop', to: 'pages#shop'
 
   # controller trainings
-  # get "trainings", to: "trainings#index"
-  # post "new_training", to: "trainings#create"
+  get "trainings", to: "trainings#index"
+  post "new_training", to: "trainings#create"
+  get "trainings", to: "trainings#edit"
 end

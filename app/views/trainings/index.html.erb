@@ -8,14 +8,21 @@
       <p> <%= training.date.strftime('%d' ' %B' ' %Y') %></p>
       <p> From: <%= training.begining.to_s(:time)   %> to: <%= training.end_time.to_s(:time) %> </p>
       <p> Address : <%= training.address %></p>
-      <p> With : <%= training.host.firstname %> </p>
-      <hr>
+
+
+    <div class="training-links">
+
+      <%= link_to "edit" , "trainings/:id/edit" %>
+
+    </div><hr>
     <% end %>
+
+
 
 
   </div>
 
-  <%= link_to "Add a training", new_host_training_path %>
+  <%= link_to "Add a training", new_training_path %>
 
 
 

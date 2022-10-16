@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_10_13_153827) do
+ActiveRecord::Schema.define(version: 2022_10_16_003534) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2022_10_13_153827) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
     t.index ["user_id"], name: "index_hosts_on_user_id"
   end
 
@@ -40,14 +41,12 @@ ActiveRecord::Schema.define(version: 2022_10_13_153827) do
 
   create_table "trainings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "host_id", null: false
     t.time "begining"
     t.time "end_time"
     t.string "address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "date"
-    t.index ["host_id"], name: "index_trainings_on_host_id"
     t.index ["user_id"], name: "index_trainings_on_user_id"
   end
 
@@ -68,6 +67,5 @@ ActiveRecord::Schema.define(version: 2022_10_13_153827) do
 
   add_foreign_key "hosts", "users"
   add_foreign_key "profiles", "users"
-  add_foreign_key "trainings", "hosts"
   add_foreign_key "trainings", "users"
 end

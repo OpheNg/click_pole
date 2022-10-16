@@ -1,6 +1,6 @@
 class Training < ApplicationRecord
   belongs_to :user
-  belongs_to :host
+
 
   # validate :after_today
   # validate :after_start_date

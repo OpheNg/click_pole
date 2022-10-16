@@ -1,51 +1,16 @@
 class HostsController < ApplicationController
 
-  # def index
-  #   @user = current_user
-  #   @hosts = Host.all
-  #   # @hosts = policy_scope(host).order(created_at: :desc)
-
-  #   # @markers = @hosts.geocoded.map do |nanny|
-  #   #   {
-  #   #     lat: nanny.latitude,
-  #   #     lng: nanny.longitude,
-  #   #     info_window: render_to_string(partial: "info_window", locals: { nanny: nanny }),
-  #   #     image_url: helpers.asset_url("mama.png")
-  #   #   }
-  #   # end
-  # end
-
-  # def new
-  #   @user = current_user
-  #   @host = Host.new
-  #   @hosts = Host.all
-  #   # authorize @host
-  # end
-
-  # def create
-  #   @host = Host.new(host_params)
-  #   @user = current_user
-  #   @host.user = current_user
-  #   # authorize @host
-
-  #   if @host.save
-  #     redirect_to hosts_path
-  #   else
-  #   end
-  # end
-
-
-  # ======================
-
   def index
     @user = current_user
-    @host = current_user
+    # @host = Host.find(params[:id])
     @hosts = Host.all
   end
+
   def new
     @user = current_user
     @host = Host.new
   end
+
   def create
     @host = Host.new(host_params)
     @user = current_user
