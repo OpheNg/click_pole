@@ -1,1 +1,30 @@
+<%# @hosts.each do |host| %>
+  <%# <div class="host-card"> %>
+      <%#= host.firstname %>
+      <%#= host.lastname %>
+      <%#= host.address %>
+      <%#= host.description %>
 
+      <%# <br> %>
+
+    <%# if host.user.id == current_user.id %>
+      <%#= link_to "edit", edit_host_path(host) %>
+    <%#else %>
+      <%#= link_to "contact", "#"%>
+    <%# end %>
+
+  <%# </div> %>
+<%# end %>
+<%# <br> %>
+
+
+<%#= link_to "become an host", new_host_path %>
+
+<h2>Share your pole</h2>
+
+<h4>Make one poler happy ! </h4>
+<%= video_tag'https://res.cloudinary.com/dhxefoe7j/video/upload/v1665351563/click%20n%20pole/Sans_titre_4_tox7zj.mp4', width:'900px', autoplay:true, loop:true %>
+
+<p>Activate the Host mode : <%= link_to "here", new_host_path %></p>
+
+<%= link_to"your host profile", 'hosts/:id' %>

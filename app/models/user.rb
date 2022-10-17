@@ -6,5 +6,5 @@ class User < ApplicationRecord
   # has_one_attached :photo
   has_many :trainings, dependent: :destroy
   has_one :profile, dependent: :destroy
-  has_many :hosts, dependent: :destroy
+  has_one :host, dependent: :destroy
 end

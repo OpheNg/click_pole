@@ -1,0 +1,23 @@
+Find a partner
+
+<br>
+<br>
+
+<% @hosts.each do |host| %>
+  <% if host.user.id != current_user.id %>
+    <div class="host-card">
+      <%= host.firstname %>
+      <%= host.lastname %>
+      <%= host.address %>
+      <%= host.description %>
+      <br>
+
+
+      <%#= link_to "edit", edit_host_path(host) %>
+    <%#else %>
+      <%= link_to "contact", "#"%>
+    <% end %>
+
+  </div>
+<% end %>
+<br>
