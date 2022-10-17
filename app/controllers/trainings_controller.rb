@@ -2,40 +2,37 @@ class TrainingsController < ApplicationController
   def index
     @user = current_user
     @trainings = Training.all
-  #   @trainings = policy_scope(training).order(created_at: :desc)
   end
 
   def show
     @user = current_user
-    @training = Training.find(params[:training_id])
-    # authorize @training
+    @training = Training.find(params[:id])
   end
 
   def new
     @user = current_user
     @training = Training.new
+    @user = current_user
   end
 
   def create
     @training = Training.new(training_params)
     @user = current_user
     @training.user = current_user
-    # authorize @training
     redirect_to trainings_path if @training.save
   end
 
   def edit
     @user = current_user
     @training = Training.find(params[:id])
-    # authorize @training
+    # @training.user= @user
+    # @training.id = Training.find(params[:id])
   end
 
   def update
     @training = Training.find(params[:id])
     @user = current_user
-    @training.user = @user
-    # authorize @training
-
+    # @training.user = @user
     if @training.update(training_params_update)
       redirect_to training_path
     else
@@ -45,8 +42,6 @@ class TrainingsController < ApplicationController
 
   def destroy
     @training = Training.find(params[:id])
-    # authorize @training
-
     if @training.destroy
       redirect_to trainings_path
     else
@@ -61,7 +56,7 @@ class TrainingsController < ApplicationController
   # end
 
   def training_params
-    params.require(:training).permit(:begining, :end_time, :date, :address, :user_id)
+    params.require(:training).permit(:date, :begining, :end_time, :address, :user_id, :id)
   end
 
   def training_params_update

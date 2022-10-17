@@ -3,7 +3,7 @@
     <h4 class="update-field">Update details :</h4>
 
     <%# remmplacer @user par @nanny, faut changer toutes les routes pour le create et le new %>
-    <%= simple_form_for [@user, @training] do |f| %>
+    <%= simple_form_for [@user, @training ] do |f| %>
       <%= f.input :date %>
       <%= f.input :begining %>
       <%= f.input :end_time %>

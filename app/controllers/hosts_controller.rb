@@ -2,8 +2,13 @@ class HostsController < ApplicationController
 
   def index
     @user = current_user
-    # @host = Host.find(params[:id])
     @hosts = Host.all
+  end
+
+  def show
+    @user = current_user
+    @hosts = Host.all
+    @host = Host.find(params[:id])
   end
 
   def new
@@ -23,15 +28,18 @@ class HostsController < ApplicationController
 
   def edit
     @user = current_user
-    @host = host.find(params[:format])
+    @host = Host.find(params[:id])
+    @hosts = Host.all
+    @host.user.id = @user.id
+
     # authorize @host
   end
 
   def update
     @host = Host.find(params[:id])
-
     @user = current_user
     @host.user = @user
+    host=
     # authorize @host
 
     if @host.update(host_params_update)
@@ -41,7 +49,7 @@ class HostsController < ApplicationController
   end
 
   def destroy
-    @host = Host.find(params[:format])
+    @host = Host.find(params[:id])
     # authorize @host
 
     if @host.destroy

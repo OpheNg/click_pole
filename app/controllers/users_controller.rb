@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def find_a_pole
     @user = current_user
+    # @host = Host.find(params[:id])
     @hosts = Host.all
-    @host = Host.find(params[:id])
   end
 
   def share

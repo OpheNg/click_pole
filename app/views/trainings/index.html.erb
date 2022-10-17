@@ -12,8 +12,9 @@
 
     <div class="training-links">
 
-      <%= link_to "edit" , "trainings/:id/edit" %>
 
+      <%#= link_to "cancel" , destroy_training_path %>
+      <%= link_to "edit" , edit_training_path(training.user.id, training.id)  %>
     </div><hr>
     <% end %>
 
