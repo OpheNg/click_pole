@@ -8,13 +8,20 @@
       <p> <%= training.date.strftime('%d' ' %B' ' %Y') %></p>
       <p> From: <%= training.begining.to_s(:time)   %> to: <%= training.end_time.to_s(:time) %> </p>
       <p> Address : <%= training.address %></p>
+      <br>
+
+      <% if training.user != current_user %>
+        <%= link_to'I want to attend', "#" %>
+      <% end %>
 
 
     <div class="training-links">
 
 
       <%#= link_to "cancel" , destroy_training_path %>
-      <%= link_to "edit" , edit_training_path(training.user.id, training.id)  %>
+      <% if training.user == current_user %>
+       <%= link_to "edit" , edit_training_path(training.user.id, training.id)  %>
+      <% end %>
     </div><hr>
     <% end %>
 
