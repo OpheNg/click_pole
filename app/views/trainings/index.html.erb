@@ -2,36 +2,38 @@
 
   <h2>Training sessions</h2>
 
-  <div class="all-sessions">
-    <hr>
-    <% @trainings.each do |training| %>
-      <p> <%= training.date.strftime('%d' ' %B' ' %Y') %></p>
-      <p> From: <%= training.begining.to_s(:time)   %> to: <%= training.end_time.to_s(:time) %> </p>
-      <p> Address : <%= training.address %></p>
-      <br>
+  <div class="training-map">
 
-      <% if training.user != current_user %>
-        <%= link_to'I want to attend', "#" %>
+    <div class="training-grid">
+      <% @trainings.each do |training| %>
+        <div class="training-card">
+          <p> <%= training.date.strftime('%d' ' %B' ' %Y') %></p>
+          <p> From: <%= training.begining.to_s(:time)   %> to: <%= training.end_time.to_s(:time) %> </p>
+          <p> Address : <%= training.address %></p>
+          <br>
+          <% if training.user != current_user %>
+            <%= link_to'I want to attend', "#" %>
+          <% end %>
+
+          <div class="edit-training-links">
+            <%#= link_to "cancel" , destroy_training_path %>
+            <% if training.user == current_user %>
+            <%= link_to "edit" , edit_training_path(training.user.id, training.id)  %>
+            <% end %>
+          </div>
+        </div>
       <% end %>
+    </div>
 
+    <div class="training_map">
+      <%= image_tag'https://res.cloudinary.com/dhxefoe7j/image/upload/v1666124737/click%20n%20pole/Sans_titre_-_2022-10-18T222431.567_m5u8hz.png',width:'600px' %>
 
-    <div class="training-links">
-
-
-      <%#= link_to "cancel" , destroy_training_path %>
-      <% if training.user == current_user %>
-       <%= link_to "edit" , edit_training_path(training.user.id, training.id)  %>
-      <% end %>
-    </div><hr>
-    <% end %>
-
-
-
-
+    </div>
   </div>
 
-  <%= link_to "Add a training", new_training_path %>
-
+    <div class="addatraining">
+      <%= link_to "Add a training", new_training_path %>
+    </div>
 
 
 </div>

@@ -1,0 +1,29 @@
+
+.trainingbox {
+  margin: 0 auto;
+}
+
+.training-map{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.training-grid{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  max-width: 50%;
+
+}
+
+
+.training-card{
+
+  border-radius: 9px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  background-color: rgb(246, 246, 246);
+
+}
